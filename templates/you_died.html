@@ -1,0 +1,46 @@
+$def with (arg1)
+<h1>
+$ debug = 1
+
+$if "dead" in arg1:
+	$if debug == 1:
+			dead
+	<h1>You Died!</h1>
+
+	<p>Looks like you suck.</p>
+	<p>
+	<form action="/" method="GET" id="form-id">
+	<input type="text" class="defaultTextBox" name="whatever" autofocus="autofocus" id="input-id" onkeyup="myScript()"> 
+	<script>
+		function myScript(){
+
+		document.getElementById('form-id').submit();
+		}
+	</script>
+	<BR><BR>
+	Press Any Key to try again.
+	</form>
+	
+$elif "load" in arg1:
+	$if debug == 1:
+			load
+	<center>
+	<h2><=========Game Data Screen=========></h2>
+	<h1>You Load!</h1>
+
+	<p>Loading...</p>
+
+	<p>
+	<form action="/" method="GET" id="form-id">
+	<input type="text" class="defaultTextBox" name="whatever" autofocus="autofocus" id="input-id" onkeyup="myScript()"> 
+	<script>
+		function myScript(){
+		
+		document.getElementById('form-id').submit();
+		}
+		</script>
+		<BR><BR>
+		<p2>Press Any Key to continue.</p2>
+	</form>
+</center>	
+</h1>

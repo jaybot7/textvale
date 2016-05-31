@@ -1,0 +1,817 @@
+$def with (room, room2)
+<h1>
+$ debug = 0
+
+$if "No Potions" in room[0] and room2:
+	
+	$if debug == 1:
+		empty potion menu
+
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	
+	$if "Nikal" in room2[0]:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+		
+		<p>	
+		$if debug == 1:
+			no town potions
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="tchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+		function myScript(){
+		document.getElementById('form-id').submit();
+		}
+		</script> 
+		</form>
+		</p>
+	
+	$elif "Battle" in room2[0]:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+		
+		<p>	
+		$if debug == 1:
+			no battle potions
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="fchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+		function myScript(){
+		document.getElementById('form-id').submit();
+		}
+		</script> 
+		</form>
+		</p>
+	$else:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+		<p>
+		$if debug == 1:
+			no outside potions	
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){			
+			document.getElementById('form-id').submit();
+			}
+		</script> 
+		</form>
+		</p>				
+		
+$elif "No Magic" in room[0] and room2:
+	
+	$if debug == 1:
+		empty magic menu
+
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	
+	$if "Battle" in room2[0]:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+		
+		<p>	
+		$if debug == 1:
+			no battle magic
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="fchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+		function myScript(){
+		document.getElementById('form-id').submit();
+		}
+		</script> 
+		</form>
+		</p>
+	$else:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+		<p>
+		$if debug == 1:
+			no outside or town magic	
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){			
+			document.getElementById('form-id').submit();
+			}
+		</script> 
+		</form>
+		</p>			
+			
+$elif "Potions available!" in room[0]:
+	$if debug == 1:
+		potions menu
+	$else:
+		$pass
+	
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+
+	$if room2:
+		$if "Nikal" in room2:
+			<p>
+			$if debug == 1:
+				town potions	
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="ptchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){	
+				document.getElementById('form-id').submit();
+				}
+			</script>
+			</form>
+			</p>
+		
+		
+		$elif "Battle" in room2:
+
+			<p>
+			$if debug == 1:
+				battle potions	
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="pbchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){
+				document.getElementById('form-id').submit();
+				}
+			</script>
+			</form>
+			</p>
+
+		
+		
+		
+	$else:
+		<p>
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="pchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){
+			
+			document.getElementById('form-id').submit();
+			}
+		</script> 
+		</form>
+		</p>
+		</center>	
+		
+$elif "Magic" in room[0]:
+	$if debug == 1:
+		magic menu
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	
+	$if room2:
+		$if "Nikal" in room2:
+			<p>
+			$if debug == 1:
+				town magic	
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="tmchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+			function myScript(){
+			document.getElementById('form-id').submit();}
+			</script>
+			</form>
+			</p>
+		
+		$elif "Battle" in room2:			
+			<p>
+			$if debug == 1:
+				battle magic	
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="mbchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){
+				document.getElementById('form-id').submit();}
+			</script>
+			</form>
+			</p>
+
+	$else:
+		<p>
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="mchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){
+			document.getElementById('form-id').submit();}
+		</script> 
+		</form>
+		</p>
+		</center>	
+
+$elif "runs" in room[0] or "Drinking" in room[0] or "inventory" in room[0]:
+	$if debug == 1:
+		drinking, running, inventory-ing
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	$if room2:
+		$if "Battle" in room2[0]:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>
+			$if debug == 1:
+				battle inventory
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="fchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+			function myScript(){
+			document.getElementById('form-id').submit();}
+			</script>> 
+			</form>
+			</p>
+		$if "Nikal" in room2[0]:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>
+			$if debug == 1:
+				town inventory
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="tchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+			function myScript(){
+			document.getElementById('form-id').submit();}
+			</script>> 
+			</form>
+			</p>
+		$elif "Shop" in room2[0]:
+			<p>
+			$if debug == 1:
+				shop inventory
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="s_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){
+				document.getElementById('form-id').submit();}
+			</script>
+			</form>
+			</p>
+		$else:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+			function myScript(){
+			document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+	$else:
+	<p>
+	<form action="/game" method="POST" id="form-id">
+	<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+	<script>
+		function myScript(){
+		document.getElementById('form-id').submit();}
+	</script> 
+	</form>
+	</p>
+	</center>
+
+$elif "appeared" in room[0] or "Hero Actions" in room[0] or "Battle" in room[0] or "Make" in room[0]:
+	$if debug == 1:
+		battle stuff
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	
+	$if room2:	
+		$if "LevelUp" in room2[0]:
+			<p>
+			$if debug == 1:
+				battle levelup		
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="lvlchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+			function myScript(){
+	
+			document.getElementById('form-id').submit();
+			}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "dead" in room2[0]:
+			$if debug == 1:
+				dead
+			<h1>You Died!</h1>
+
+			<p>Looks like you suck.</p>
+			<p>
+			<form action="/" method="GET" id="form-id">
+			<input type="text" class="defaultTextBox" name="whatever" autofocus="autofocus" id="input-id" onkeyup="myScript()"> 
+			<script>
+				function myScript(){		
+				document.getElementById('form-id').submit();}
+			</script>
+			<BR><BR>
+			Press Any Key to try again.
+			</form>
+		
+		$elif "Actions" in room2[0]:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>
+			battle drinking	or casting		
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="fchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+			</center>
+		
+		$else:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){		
+				document.getElementById('form-id').submit();
+				}
+			</script>
+			</form>
+			</p>	
+	
+	$else:
+		<p>
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="fchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){
+			document.getElementById('form-id').submit();
+			}
+		</script>	 
+		</form>
+		</p>
+		</center>
+
+$elif "Quest" in room[0]:
+	$if debug == 1:
+		questing
+	$if room2:
+		$if "TalkBar" in room2 and "look around" in room[2] or "look around" in room[3]:
+			<center>
+			<p>
+			$if debug == 1:
+				talkchoice quest
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]		
+			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="talkbar_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		$elif "Nikal" in room2 and "inside of a town" in room[3] or "inside of a town" in room[2]:
+			<center>
+			<p>
+			$if debug == 1:
+				town main quest
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="tchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "TownTalk" in room2 and "a few things you may" in room[3]:
+			<center>
+			<p>
+			$if debug == 1:
+				town talk quest
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="towntalk_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+$elif "Nikal" in room[0]:
+	$if debug == 1:
+		town menu
+	<center>
+	$if not room2:
+		$ j = -1
+		$for i in room:
+			$ j = j + 1
+			$:room[j]
+		<p>
+		<form action="/game" method="POST" id="form-id">
+		<input type="text" name="tchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+		<script>
+			function myScript(){			
+			document.getElementById('form-id').submit();}
+		</script> 
+		</form>
+		</p>
+	$if room2:
+		$if "Shop" in room2 and not "wares" in room[1] and not "wanna" in room[1] and not "like to sell" in room[1] and not "wanna sell" in room[1]:
+			<p>
+			$if debug == 1:
+				shop menu
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="s_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		$elif "Shop" in room2 and "like to sell" in room[1]:
+			<p>
+			$if debug == 1:
+				sell menu
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="ss_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "walk into" in room[1]:
+			<p>
+			$if debug == 1:
+				bar menu
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="bar_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "Welcome" in room[1]:
+			<p>
+			$if debug == 1:
+				bar commands
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="barcom_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "TalkBar" in room2 and "Bar Convo" in room[1]:
+			<p>
+			$if debug == 1:
+				talk choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="barconvo_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "TownTalk" in room2 and "Town Convo" in room[1]:
+			<p>
+			$if debug == 1:
+				towntalk commands
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="townconvo_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "TownTalk" in room2 and "Looking around the town" in room[1]:
+			<p>
+			$if debug == 1:
+				town talk choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="towntalk_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "TalkBar" in room2 and "You notice:" in room[1]:
+			<p>
+			$if debug == 1:
+				talk choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="talkbar_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "Want a bed" in room[1]:
+			<p>
+			$if debug == 1:
+				bed choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="bed_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "Thirsty" in room[1]:
+			<p>
+			$if debug == 1:
+				beer choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="beer_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "One brew..." in room[1]:
+			<p>
+			$if debug == 1:
+				beer choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="barcom_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Bar" in room2 and "One bed, coming" in room[1]:
+			<p>
+			$if debug == 1:
+				bed choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="barcom_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "NoBeer" in room2 or "NoBed" in room2:
+			<p>
+			$if debug == 1:
+				beer choice
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="barcom_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Shop" in room2 and "wanna buy" in room[1]:
+			<p>
+			$if debug == 1:
+				buy confirm
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="sbconfirm_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		$elif "Shop" in room2 and "wanna sell" in room[1]:
+			<p>
+			$if debug == 1:
+				sell confirm
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="ssconfirm_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$elif "Shop" in room2 and "wares" in room[1]:
+			<p>
+			$if debug == 1:
+				buy menu
+			</p>
+			$ j = -1
+			$for i in room:
+				$ j = j + 1
+				$:room[j]
+			<p>			
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="sb_choice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>
+		
+		$else:
+			$ j2 = -1
+			$for i in room2:
+				$ j2 = j2 + 1
+				$:room2[j2]
+			<p>	
+			<form action="/game" method="POST" id="form-id">
+			<input type="text" name="tchoice" class="defaultTextBox" autofocus="autofocus" onkeyup="myScript()"> 
+			<script>
+				function myScript(){			
+				document.getElementById('form-id').submit();}
+			</script> 
+			</form>
+			</p>		
+			
+$else:
+	$if debug == 1:
+		default, probably overworld
+	<center>
+	$ j = -1
+	$for i in room:
+		$ j = j + 1
+		$:room[j]
+	
+	$if room2:
+		$ j2 = -1
+		$for i in room2:
+			$ j2 = j2 + 1
+			$:room2[j2]
+	
+	<p>
+	<form action="/game" method="POST" id="form-id">
+	<input type="text" name="choice" class="defaultTextBox" autofocus="autofocus" id="input-id" onkeyup="myScript()"> 
+	<script>
+		function myScript(){
+		document.getElementById('form-id').submit();}
+		</script>	
+	</form>
+	</p>
+	</center>
+</h1>
